@@ -115,8 +115,7 @@ st.markdown(f"""
 
 @st.cache_data
 def load_my_data(file):
-    file_path = os.path.join("EKG", file)
-    data = pd.read_csv(file_path, sep='\t', decimal=',', header=None, skiprows=10)
+    data = pd.read_csv(file, sep='\t', decimal=',', header=None, skiprows=10)
     data = data.apply(pd.to_numeric, errors='coerce')
     data = data.dropna()
     return data
