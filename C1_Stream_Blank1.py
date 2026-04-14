@@ -159,7 +159,6 @@ def load_my_data():
 
 # Wywołanie danych
 df, df2 = load_my_data()
-=
 """def sload_my_data(file):
     data = pd.read_csv(file, sep='\t', decimal=',', header=None, skiprows=10)
     data = data.apply(pd.to_numeric, errors='coerce')
