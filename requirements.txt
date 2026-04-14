@@ -9,3 +9,4 @@ plotly
 neurokit2
 jinja2
 gdown
+emd
