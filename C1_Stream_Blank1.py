@@ -117,7 +117,7 @@ st.markdown(f"""
 @st.cache_data
 def load_my_data():
     filename_1 = "ekg_400Hz_10min.txt"
-    file_id1 = 'd/1UsK27t-StzlXlUE6vPmmQ19bcmokHZ_p'
+    file_id1 = '1UsK27t-StzlXlUE6vPmmQ19bcmokHZ_p'
 
     filename_2 = "ekg_400Hz_10min_wysilkowe.txt"
     file_id2 = "1De3jA04yf-FoIqV9hToVFKY9RgzCJI2H"
