@@ -148,8 +148,13 @@ def load_my_data():
 
     # Wczytywanie
     try:
-        data = pd.read_pickle(filename_1)
-        data2 = pd.read_pickle(filename_2)
+
+        data = pd.read_csv(filename_1, sep='\t', decimal=',', header=None, skiprows=10)
+        data = data.apply(pd.to_numeric, errors='coerce')
+        data = data.dropna()
+        data2 = pd.read_csv(filename_2, sep='\t', decimal=',', header=None, skiprows=10)
+        data2 = data2.apply(pd.to_numeric, errors='coerce')
+        data2 = data2.dropna()
         return data, data2
     except Exception as e:
         st.error(f"Błąd wczytywania pkl: {e}")
@@ -158,7 +163,7 @@ def load_my_data():
  
 
 # Wywołanie danych
-df, df2 = load_my_data()
+df_spocz, df_wys = load_my_data()
 """def sload_my_data(file):
     data = pd.read_csv(file, sep='\t', decimal=',', header=None, skiprows=10)
     data = data.apply(pd.to_numeric, errors='coerce')
@@ -170,8 +175,7 @@ df, df2 = load_my_data()
 # WCZYTANIE DANYCH
 # ============================================================
 
-df_spocz = df
-df_wy = df2
+
 
 fs = 400  # Hz
 
