@@ -142,7 +142,7 @@ def load_my_data():
     with st.spinner('Synchronizacja z Google Drive...'):
         download_file(file_id1, filename_1)
         download_file(file_id2, filename_2)
-        download_file(file_id3, filename_3)
+
 
  
 
