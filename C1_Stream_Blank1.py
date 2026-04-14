@@ -114,7 +114,51 @@ st.markdown(f"""
 
 
 @st.cache_data
-def load_my_data(file):
+    filename_1 = "ekg_400Hz_10min.txt"
+    file_id1 = 'd/1UsK27t-StzlXlUE6vPmmQ19bcmokHZ_p'
+
+    filename_2 = "ekg_400Hz_10min_wysilkowe.txt"
+    file_id2 = "1De3jA04yf-FoIqV9hToVFKY9RgzCJI2H"
+
+
+    # Funkcja pomocnicza do pobierania
+    def download_file(file_id, output_name):
+        url = f'https://drive.google.com/uc?id={file_id}'
+        # Jeśli plik istnieje, usuwamy go, aby gdown pobrał nową wersję
+        if os.path.exists(output_name):
+            os.remove(output_name)
+
+        try:
+            # gdown czasami potrzebuje parametru fuzzy=True dla GDrive
+            gdown.download(url, output_name, quiet=False)
+        except Exception as e:
+            st.error(f"Błąd pobierania {output_name}: {e}")
+
+ 
+
+    # Pobieranie plików
+    with st.spinner('Synchronizacja z Google Drive...'):
+        download_file(file_id1, filename_1)
+        download_file(file_id2, filename_2)
+        download_file(file_id3, filename_3)
+
+ 
+
+    # Wczytywanie
+    try:
+        data = pd.read_pickle(filename_1)
+        data2 = pd.read_pickle(filename_2)
+        return data, data2
+    except Exception as e:
+        st.error(f"Błąd wczytywania pkl: {e}")
+        return pd.DataFrame(), pd.DataFrame()
+
+ 
+
+# Wywołanie danych
+df, df2 = load_my_data()
+
+"""def load_my_data(file):
     data = pd.read_csv(file, sep='\t', decimal=',', header=None, skiprows=10)
     data = data.apply(pd.to_numeric, errors='coerce')
     data = data.dropna()
@@ -125,7 +169,7 @@ def load_my_data(file):
 # ============================================================
 
 df_spocz = load_my_data('ekg_400Hz_10min.txt')
-df_wys   = load_my_data('ekg_400Hz_10min_wysilkowe.txt')
+df_wys   = load_my_data('ekg_400Hz_10min_wysilkowe.txt')"""
 
 fs = 400  # Hz
 
