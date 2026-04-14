@@ -31,12 +31,6 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 import neurokit2 as nk
 
-
-#%%--------------------------------Lokalizacja pliku---------------------------
-
-path_inp="C:/Users/Lenovog/OneDrive - University of Gdansk (for Students)/Dokumenty/Fizyka_mgr/semestr 4/Biofizyka"
-os.chdir(path_inp)
-
 #%%--------------------------------Ustawienia wstępne kolorów------------------
 
 st.set_page_config(layout="wide")
@@ -121,8 +115,8 @@ st.markdown(f"""
 
 @st.cache_data
 def load_my_data(file):
-    path_inp = "C:/Users/Lenovog/OneDrive - University of Gdansk (for Students)/Dokumenty/Fizyka_mgr/semestr 4/Biofizyka/EKG"
-    file_path = os.path.join(path_inp, file)
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    file_path = os.path.join(BASE_DIR, "EKG", file)
     data = pd.read_csv(file_path, sep='\t', decimal=',', header=None, skiprows=10)
     data = data.apply(pd.to_numeric, errors='coerce')
     data = data.dropna()
