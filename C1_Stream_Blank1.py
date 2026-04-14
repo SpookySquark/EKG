@@ -164,18 +164,10 @@ def load_my_data():
 
 # Wywołanie danych
 df_spocz, df_wys = load_my_data()
-"""def sload_my_data(file):
-    data = pd.read_csv(file, sep='\t', decimal=',', header=None, skiprows=10)
-    data = data.apply(pd.to_numeric, errors='coerce')
-    data = data.dropna()
-    return data
-    """
 
 # ============================================================
 # WCZYTANIE DANYCH
 # ============================================================
-
-
 
 fs = 400  # Hz
 
